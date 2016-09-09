@@ -1,0 +1,56 @@
+/* CSS Document */
+ #box1,#box2,#box3,#box4,#box5 ,#box6,#box7,#box8 {display:none;margin-top:-35px;}
+ #title {padding:10px;}
+.Formtabs {
+float:center;
+text-align:center;
+ width:120%;
+ margin-right:-30%;
+ padding-right:-40px;
+ margin-left:-10%;
+list-style: none;}
+ 
+.Formlabels label {
+	display: block;
+}
+
+.Formlabels:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.Formlabels label {
+	display: inline-block;
+	float: right;
+    padding: 8px 13px;
+    color: #FFFFFF;
+    background: #27265e;
+    cursor: pointer;
+    border: 1px solid #BEBEBE;
+}
+ 
+.Formlabels label:hover {
+    background: #0774b8;
+}
+ 
+.Formtab-content {
+    display: none;
+    padding: 15px;
+    border-top: 10px solid #8f2b8b;
+    background-color:#transparent;
+}
+
+
+.Formtabs input[type=radio] {
+    display:none;
+}
+ 
+[id^=Formtab]:checked ~ div[id^=Formtab-content] {
+    display: block;
+}
+
+[id^=Formtab]:checked ~ [id^=Formlabel]  {
+    background: #08C;
+    color: white;
+}

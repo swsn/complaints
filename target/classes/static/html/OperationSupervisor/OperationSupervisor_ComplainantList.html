@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/jdbc"  xmlns:th="http://www.thymeleaf.org">
+
+<!----------------------------- Head --------------------------->
+<head>
+
+    <title> عرض الشكاوى </title>
+
+    <!-- RegionalDirectorCSSFile -->
+    <link rel="stylesheet" type="text/css" href="../../css/OperationSupervisorCSSFile.css">
+    <!-- search bar link -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+    <!-- Angular JS -->
+    <script type="text/javascript" src="../../app/angular.min.js" th:src="@{/angular.min.js}"></script>
+    <script type="text/javascript" src="../../app/ngStorage.min.js" th:src="@{/ngStorage.min.js}"></script>
+    <script type="text/javascript" src="../../app/complaint.controller.js" th:src="@{/app/complaint.controller.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="../../favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../../css/navbar-fixed-top.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/jQueryTab.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/animation.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/Tabstyle.css" type="text/css" media="screen" />
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../js/ie-emulation-modes-warning.js"></script>
+
+</head>
+
+
+
+
+<!----------------------------- Body --------------------------->
+<body ng-app="myApp" ng-controller="complaintListController as nc" >
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a   href="OperationSupervisor_Home.html"><img id="logo" class="container" src="../../img/logo.jpeg"  /></a>
+        <div class="navbar-header">
+            <a   href="#"><img id ="userimg"class="navbar-brand"src="../../img/user.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/envelope.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/search.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/settings.png"/></a>
+            <a   href="#"class="navbar-brand">مرحبًا،عبدالرحمن محمد</a>
+        </div>
+    </div>
+</nav>  <!-- Fixed navbar -->
+<div class="container" >
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">الطلبات الواردة</a>
+            <div class="list-groupx">
+                <a href="requestDetailsRM.html" class="list-group-item"  title="مقدم الطلب: محمد صالح | حادث أدى إلى تعطل العمل"><img id="list_icon" src="../../img/siren.png" />تسجيل واقعة: رقم#34524 </a>
+                <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: الأحوال فرع 103</a>
+            </div></div>
+        <div class="list-group">
+            <a href="#" class="list-group-item active">طلبات مستلمة</a>
+            <div class="list-groupx">
+                <a href="#" class="list-group-item" title="مقدم الطلب: خلود"><img id="list_icon" src="../../img/email.png" />شكوى: رقم#45235</a>
+                <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: رقم#05476</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: سالم يوسف | شراء طابعة"><img id="list_icon" src="../../img/shopping-cart.png" />شراء: رقم#98578</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: سعود خالد "><img id="list_icon" src="../../img/idea.png" />فكرة: رقم#09487</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: يوسف"><img id="list_icon" src="../../img/megaphone.png" />تعميم: رقم#984857</a>
+            </div></div>
+
+    </div>
+    <!-- Main component for a primary marketing message or call to action -->
+    <div id="w">
+        <nav>
+            <ul id="nav">
+                <li><a href="#">الطلبات</a>
+                    <ul>
+                        <li><a href="#">تسجيل واقعة</a></li>
+                        <li><a href="#">تعويض الوقت الإضافي</a></li>
+                        <li><a href="OperationSupervisor_ComplainantList.html">عرض الشكاوى</a></li>
+                        <li><a href="#">فكرة</a></li>
+                        <li><a href="#">شراء</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">التقارير</a>
+                    <ul>           <li><a href="#">التعاميم</a></li>
+                        <li><a href="#">قائمة المكرمين</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div> <!-- /container -->
+
+
+<!--Search Box -->
+<div id="Search-Box-Div">
+    <div class="input-group search-bar">
+        <input type="text" class="form-control" placeholder=" بحث ">
+        <span class="input-group-btn">
+                 <button class="btn btn-default" type="button">
+                     <img src="../../img/SearchIcon.png" alt="بحث" height= "20px" width="20px" ; >
+               </button>
+        </span>
+    </div>
+</div> <!-- Search Box --->
+
+
+<!-------- Complaints List Div --------->
+<div id="ComplaintsListDiv" >
+
+    <!------------- Mail Box --------------->
+    <div class="inbox-body">
+        <div class="mail-option">
+            <div class="chk-all">
+                <div class="btn-group">
+                    <a data-toggle="dropdown" href="#" class="btn mini all" aria-expanded="false">     عرض الكل
+                        <i class="fa fa-angle-down "></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"> مقروء</a></li>
+                        <li><a href="#"> غير مقروء</a></li>
+                        <li><a href="#"> المفضلة</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#" class="btn mini tooltips">
+                    <i class=" fa fa-refresh"></i>
+                </a>
+            </div>
+            <div class="btn-group hidden-phone">
+                <a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">  ترتيب حسب
+                    <i class="fa fa-angle-down "></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i ></i> التاريخ</a></li>
+
+                </ul>
+            </div>
+
+            <ul class="unstyled inbox-pagination">
+                <li><span>{{nc.complaints.length}} of {{nc.complaints.length}} </span></li>
+                <li>
+                    <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
+                </li>
+                <li>
+                    <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
+                </li>
+            </ul>
+        </div>
+        <hr style="border-width: 13px; border-color :#730099 ;">
+        <table class="table table-inbox table-hover" style="background-color : white ">
+
+
+            <tr class="unread" ng-repeat="complaint in nc.complaints">
+                <td class="inbox-small-cells">
+                    <button  id="viewComplaint" style="
+    width: 70px;
+    height : 30px;
+    border : none ;
+    background-color :  #730099 ;
+    color : white;
+    border-radius : 5px;" onclick="location.href='OperationSupervisor_Summery.html'"  >
+                                                        تفاصيل
+                                                        </button>
+            </td>
+                <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
+                <td class="view-message  dont-show" style="font-size: 10px">{{complaint.type}}</td>
+                <td class="view-message" ng-click="currentComplaint(complaint.complaintId);
+        currentProject(complaint.projectId) ;
+        currentEmployee(complaint.employeeID);
+        getComments(complaint.complaintId);
+        getStatus(complaint.complaintId);  " > {{complaint.title}} </td>
+                <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+                <td class="view-message  text-right" style="font-size: 10px">{{complaint.date}}</td>
+            </tr>
+
+
+
+
+
+        </table>
+    </div> <!-- Mail Box-->
+</div> <!-- ComplaintsListDiv-->
+<script>
+
+</script>
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../js/bootstrap.min.js"></script>
+
+<script type="text/javascript" language="javascript" charset="utf-8" src="../../js/nav.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="../../js/Chart.bundle.js"></script>
+<script src="../../js/jQueryTab.js"></script>
+<script src="../../js/test.js"></script>
+
+<script>
+
+    document.getElementById("box1").style.display="block";
+    box11();
+    function hide()
+    {
+        document.getElementById("box1").style.display="none";
+        document.getElementById("box2").style.display="none";
+        document.getElementById("box3").style.display="none";
+        document.getElementById("box4").style.display="none";
+        document.getElementById("box5").style.display="none";
+        document.getElementById("box6").style.display="none";
+        document.getElementById("box7").style.display="none";
+
+    }
+    function box1(){
+        hide();
+        document.getElementById("box1").style.display="block";
+        box11();
+    }
+
+    function box2(){hide();
+        document.getElementById("box2").style.display="block";
+        box22();
+    }
+
+    function box3(){hide();
+        document.getElementById("box3").style.display="block";
+        box33();
+    }
+
+    function box4(){hide();
+        document.getElementById("box4").style.display="block";
+        box44();
+    }
+
+    function box5(){hide();
+        document.getElementById("box5").style.display="block";
+        box55();
+    }
+
+    function box6(){hide();
+        document.getElementById("box6").style.display="block";
+        box66();
+    }
+
+    function box7(){hide();
+        document.getElementById("box7").style.display="block";
+        box77();
+    }
+
+
+</script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../js/ie10-viewport-bug-workaround.js"></script>
+
+<!-- Scripts -->
+
+<!-- Drop down menu for sorting script -->
+<script>
+    /* When the user clicks on the button,
+     toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+
+</html>

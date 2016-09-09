@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html ng-app="myApp" xmlns:th="http://www.springframework.org/schema/jdbc"  xmlns:th="http://www.thymeleaf.org">
+<!----------------------------- Head --------------------------->
+<head>
+
+    <title> ملخص الشكوى </title>
+
+    <!-- RegionalDirectorCSSFile -->
+    <link rel="stylesheet" type="text/css" href="../../css/OperationSupervisorCSSFile.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="../../favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../../css/navbar-fixed-top.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/jQueryTab.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/animation.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/Tabstyle.css" type="text/css" media="screen" />
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../js/ie-emulation-modes-warning.js"></script>
+
+    <!-- Angular JS -->
+    <script type="text/javascript" src="../../app/angular.min.js" th:src="@{/angular.min.js}"></script>
+    <script type="text/javascript" src="../../app/ngStorage.min.js" th:src="@{/ngStorage.min.js}"></script>
+    <script type="text/javascript" src="../../app/complaint.controller.js" th:src="@{/static/app/complaint.controller.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+</head>
+
+<!----------------------------- Body --------------------------->
+<body ng-controller="complaintSummeryController" >
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a   href="RegionalDirector_Home.html"><img id="logo" class="container" src="../../img/logo.jpeg"  /></a>
+        <div class="navbar-header">
+            <a   href="#"><img id ="userimg"class="navbar-brand"src="../../img/user.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/envelope.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/search.png"/></a>
+            <a   href="#"><img class="navbar-brand" src="../../img/settings.png"/></a>
+            <a   href="#"class="navbar-brand">مرحبًا،فيصل خالد</a>
+        </div>
+    </div>
+</nav>  <!-- Fixed navbar -->
+
+
+<div class="container" >
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">الطلبات الواردة</a>
+            <div class="list-groupx">
+                <a href="requestDetailsRM.html" class="list-group-item"  title="مقدم الطلب: محمد صالح | حادث أدى إلى تعطل العمل"><img id="list_icon" src="../../img/siren.png" />تسجيل واقعة: رقم#34524 </a>
+                <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: الأحوال فرع 103</a>
+            </div></div>
+        <div class="list-group">
+            <a href="#" class="list-group-item active">طلبات مستلمة</a>
+            <div class="list-groupx">
+                <a href="#" class="list-group-item" title="مقدم الطلب: خلود"><img id="list_icon" src="../../img/email.png" />شكوى: رقم#45235</a>
+                <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: رقم#05476</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: سالم يوسف | شراء طابعة"><img id="list_icon" src="../../img/shopping-cart.png" />شراء: رقم#98578</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: سعود خالد "><img id="list_icon" src="../../img/idea.png" />فكرة: رقم#09487</a>
+                <a href="#" class="list-group-item" title="مقدم الطلب: يوسف"><img id="list_icon" src="../../img/megaphone.png" />تعميم: رقم#984857</a>
+            </div></div>
+
+    </div>
+
+    <div id="w">
+
+        <nav>
+            <ul id="nav">
+                <li><a href="#">الطلبات</a>
+                    <ul>
+                        <li><a href="requestform.html">تسجيل واقعة</a></li>
+                        <li><a href="#">تعويض الوقت الإضافي</a></li>
+                        <li><a href="RegionalDirector_ComplainantList.html">عرض الشكاوى</a></li>
+                        <li><a href="#">فكرة</a></li>
+                        <li><a href="#">شراء</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">التقارير</a>
+                    <ul>           <li><a href="#">التعاميم</a></li>
+                        <li><a href="#">قائمة المكرمين</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div> <!-- /container -->
+
+<!------------- Main Container --------------->
+<div id= "complanintSummeryTableContainer">
+    <h3> ملخص الشكوى <span id="complainantDate" > <br> {{complaint.date}}</span> </h3>
+    <!--- Complaint Summery Table -->
+    <table id="summeryTable"  >
+
+        <!-- complaint Title--->
+        <tr>
+            <td class="dataCell" colspan="5">{{complaint.title}}</td>
+            <td class="headCell">العنوان</td>
+        </tr>
+
+        <!-- Whom report the complaint --->
+        <tr>
+            <td class="dataCell" colspan="5"> {{employee.employeeName}}</td>
+            <td class="headCell">الاسم</td>
+        </tr>
+
+        <!--The project details --->
+        <tr>
+            <td class="dataCell">{{project.branch}}</td>
+            <td class="headCell">الفـــــرع</td>
+            <td class="dataCell"> {{project.name}}</td>
+            <td class="headCell">المــشروع</td>
+            <td class="dataCell">{{project.city}}</td>
+            <td class="headCell">المديـنة</td>
+        </tr>
+
+        <!--Complaint content --->
+        <tr>
+            <td  class="dataCell" colspan="5" style="text-align : right ;" >
+                {{complaint.content}}
+            </td>
+            <td class="headCell">نص الشكوى </td>
+        </tr>
+
+        <!--Attachment --->
+        <tr>
+            <td class="dataCell" colspan="5">لايوجد</td>
+            <td class="headCell">المرفقات</td>
+        </tr>
+    </table> <!--- Complaint Summery Table -->
+
+    <!--Lock Complaint button -->
+    <div  ng-if="complaint.open" >
+        <img  id="unlockImg" src ="../../img/Unlock.png">
+    </div>
+
+    <!-- Unlock Complaint Icon -->
+    <div ng-if="!complaint.open" >
+        <img id="lockImg" src ="../../img/Lock.png">
+    </div>
+
+    <!-- Track complaint Button -->
+    <button id="track1"  ng-if="!complaint.open" style="left:0" onclick="location.href='RegionalDirector_StatusTable.html'">
+        متابعة الشكوى
+    </button>
+
+    <button id="track2"  ng-if="complaint.open"  style="left:0" onclick="location.href='RegionalDirector_StatusTable.html'">
+        متابعة الشكوى
+    </button>
+
+    <button id="viewCommentButton" onclick="displayComment();">
+        <img id="expandArrow" src="../../img/ExpandArrow.png"/> تعليقات </button>
+
+    <!-- List of Comments Div-->
+    <div ng-if="comments.length > 0" id="viewCommentDiv" ng-init="Employee(comments[0].employeeId)">
+        <div ng-repeat="comment in comments;"  >
+            <h3>{{employee1.employeeName}} </h3>
+            <h6> {{comment.date}} </h6>
+            <h5> {{comment.content}} </h5>
+            <hr style="border : 1px solid #d9d9d9" />
+        </div>
+    </div>
+
+    <!-- Add New Comment-->
+    <div ng-show="comments.length==0" id="commentsBox">
+        <form id="CommentForm">
+            <textarea  id="commentText" placeholder ="إضافة تعليق"  ng-model="content"></textarea>
+            <button id="addComment" onclick="commentAdded()" ng-click="addNewComment(complaint.complaintId, '12345679', content);" > إضافة </button>
+        </form>
+    </div>
+
+    <!-- Approve and Reject Buttons -->
+    <div id="ApprovRejectButtonsDiv" ng-if="status.length == 0" >
+        <button id="ApproveButton" ng-click="setStatus(complaint.complaintId, '12345679',1);"> قبول </button>
+        <button id="RejectButton"  ng-click="setStatus(complaint.complaintId, '12345679', 0);">  رفض </button>
+    </div>
+
+    <!-- Approve Icon -->
+    <div  ng-if="TheStatus(0).value == true">
+        <p style="margin:auto; top:55px; bottom:0 ;left:5px ;right:500px; position : absolute; color: mediumseagreen ;">!مقبولة</p>
+    <img id="greenCheck" src ="../../img/greenCheck.png">
+    </div>
+
+    <!-- Reject Icon -->
+    <div ng-if="TheStatus(0).value == false">
+        <p style="margin:auto; top:55px; bottom:0 ;left:5px ;right:500px; position : absolute; color: red;">!مرفوضة</p>
+    <img  id="rejectedComplaintIcon" src ="../../img/reject.png">
+    </div>
+
+</div>
+
+<script>
+
+    function commentAdded()
+    {
+        document.getElementById("commentsBox").style.display = 'none' ;
+    }
+
+    function displayComment()
+    {
+        var div =  document.getElementById('viewCommentDiv');
+        if(div.style.display == "block")
+        {div.style.display = "none";}
+        else
+        {div.style.display = "block";}
+    }
+</script>
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" language="javascript" charset="utf-8" src="../../js/nav.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="../../js/Chart.bundle.js"></script>
+<script src="../../js/jQueryTab.js"></script>
+<script src="../../js/test.js"></script>
+
+
+<script>
+
+
+    document.getElementById("box1").style.display="block";
+    box11();
+    function hide()
+    {
+        document.getElementById("box1").style.display="none";
+        document.getElementById("box2").style.display="none";
+        document.getElementById("box3").style.display="none";
+        document.getElementById("box4").style.display="none";
+        document.getElementById("box5").style.display="none";
+        document.getElementById("box6").style.display="none";
+        document.getElementById("box7").style.display="none";
+
+    }
+    function box1(){
+        hide();
+        document.getElementById("box1").style.display="block";
+        box11();
+    }
+
+    function box2(){hide();
+        document.getElementById("box2").style.display="block";
+        box22();
+    }
+
+    function box3(){hide();
+        document.getElementById("box3").style.display="block";
+        box33();
+    }
+
+    function box4(){hide();
+        document.getElementById("box4").style.display="block";
+        box44();
+    }
+
+    function box5(){hide();
+        document.getElementById("box5").style.display="block";
+        box55();
+    }
+
+    function box6(){hide();
+        document.getElementById("box6").style.display="block";
+        box66();
+    }
+
+    function box7(){hide();
+        document.getElementById("box7").style.display="block";
+        box77();
+    }
+
+
+</script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>

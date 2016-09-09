@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html ng-app="myApp" xmlns:th="http://www.springframework.org/schema/jdbc">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>حالة الشكوى</title>
+	<!-- RegionalDirectorCSSFile -->
+    <link rel="stylesheet" type="text/css" href="../../css/OperationSupervisorCSSFile.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/navbar-fixed-top.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+<link rel="stylesheet" href="../../css/jQueryTab.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/animation.css" type="text/css" media="screen" />
+ 		<link rel="stylesheet" href="../../css/Tabstyle.css" type="text/css" media="screen" />
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+      <script src="../../js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+      <!-- Angular JS -->
+      <script type="text/javascript" src="../../app/angular.min.js" th:src="@{/angular.min.js}"></script>
+      <script type="text/javascript" src="../../app/ngStorage.min.js" th:src="@{/ngStorage.min.js}"></script>
+      <script type="text/javascript" src="../../app/complaint.controller.js" th:src="@{/static/app/complaint.controller.js}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+  </head>
+  <body ng-controller="TableController">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+	    <a   href="RegionalDirector_Home.html"><img id="logo" class="container" src="../../img/logo.jpeg"  /></a>
+        <div class="navbar-header">
+          <a   href="#"><img id ="userimg"class="navbar-brand"src="../../img/user.png"/></a>
+		  <a   href="#"><img class="navbar-brand" src="../../img/envelope.png"/></a>
+		   <a   href="#"><img class="navbar-brand" src="../../img/search.png"/></a>
+          <a   href="#"><img class="navbar-brand" src="../../img/settings.png"/></a>
+		  <a   href="#"class="navbar-brand">مرحبًا،فيصل خالد</a>
+		</div>   
+      </div>
+    </nav>
+
+    <div class="container" >
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <div class="list-group">
+            <a href="#" class="list-group-item active">الطلبات الواردة</a>
+			<div class="list-groupx">
+            <a href="#" class="list-group-item" title="مقدم الطلب: سعود خالد "><img id="list_icon" src="../../img/idea.png" />فكرة: حيِاك فرع 105</a>
+            <a href="#" class="list-group-item" title="مقدم الطلب: خلود"><img id="list_icon" src="../../img/email.png" />شكوى: الإرشيف فرع 43</a>
+            <a href="#" class="list-group-item" title="مقدم الطلب: يوسف"><img id="list_icon" src="../../img/megaphone.png" />تعميم: المرور فرع 98</a>
+            <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: الأحوال فرع 103</a>
+            <a href="#" class="list-group-item" title="مقدم الطلب: ولاء يوسف "><img id="list_icon" src="../../img/collaboration.png" />تكليف: إيواء فرع 06</a>
+            <a href="#" class="list-group-item" title="مقدم الطلب: سالم يوسف | شراء طابعة"><img id="list_icon" src="../../img/shopping-cart.png" />شراء: الديوان الملكي فرع 54</a>
+          </div></div>
+  
+		    <div class="list-group">
+          <a href="#" class="list-group-item active">طلبات مستلمة\مغلقة اليوم</a>
+		  <div class="list-groupx">
+			<a href="requestDetails.html" class="list-group-item" title="مقدم الطلب: محمد صالح | حادث أدى إلى تعطل العمل"><img id="list_icon" src="../../img/siren.png" />حادث: الأحوال  فرع 103</a>
+		  <a href="#" class="list-group-item" title="مقدم الطلب: خلود"><img id="list_icon" src="../../img/email.png" />شكوى: الأحوال فرع 134</a>
+		  <a href="#" class="list-group-item" title="مقدم الطالب: فاديه محمود"><img id="list_icon" src="../../img/clock.png" />تعويض الوقت الإضافي: المرور فرع 21</a>
+          <a href="#" class="list-group-item" title="مقدم الطلب: سالم يوسف | شراء طابعة"><img id="list_icon" src="../../img/shopping-cart.png" />شراء: الديوان الملكي فرع 54</a>
+          <a href="#" class="list-group-item" title="مقدم الطلب: سعود خالد "><img id="list_icon" src="../../img/idea.png" />فكرة: إيواء فرع 23</a>
+          <a href="#" class="list-group-item" title="مقدم الطلب: يوسف"><img id="list_icon" src="../../img/megaphone.png" />تعميم: حيٍاك فرع 03</a>
+            </div></div>
+		  
+        </div><!--/.sidebar-offcanvas -->
+      <!-- Main component for a primary marketing message or call to action -->
+<div id="StatusTableContainer">
+
+<h4>متابعة حالة الشكوى</h4>
+    <div ng-if="complaint.open">
+    <h5> حالة الشكوى: <span style="color:green;">مفتوحة </span></h5>
+    </div>
+
+    <div ng-if="!complaint.open">
+        <h5> حالة الشكوى: <span style="color:red;">مغلقة </span></h5>
+    </div>
+  
+<!--------- Status Table --------->
+	<table class="tg" id="StatusTable">
+  <tr>
+    <th class="tg-yw4l" style="border: none">  </th>
+	<th class="tg-yw4l">مدير الفرع</th>
+    <th class="tg-yw4l">مشرف العمليات</th>
+    <th class="tg-yw4l">المدير الإقليمي</th>
+    <th class="tg-yw4l">مدير العمليات</th>
+    <th class="tg-yw4l"></th>
+  </tr>
+
+  <tr>
+    <td class="tg-yw4l" style="border: none ; background-color: #f2f2f2"> </td>
+	<td class="tg-yw4l">  </td>
+    <td class="tg-yw4l"> {{status[0].date}} <br> {{comments[0].date}}</td>
+    <td class="tg-yw4l"> {{status[1].date}} </td>
+    <td class="tg-yw4l">  </td>
+    <td class="tg-yw4l"> الوقت والتاريخ</td>
+  </tr>
+
+  <tr>
+    <td class="tg-yw4l" style="border: none ; background-color: #f2f2f2"></td>
+	<td class="tg-yw4l" style="background-color: #f2f2f2"> </td>
+    <td class="tg-yw4l" ng-if="status[0].value == true" style="color:green;">مقبولة</td>
+      <td class="tg-yw4l" ng-if="status[0].value == false" style="color:red;">مرفوضة</td>
+      <td class="tg-yw4l" ng-if="status[0] == NaN" > </td>
+
+      <td class="tg-yw4l" ng-if="status[1].value == true" style="color:green;">مقبولة</td>
+      <td class="tg-yw4l" ng-if="status[1].value == false" style="color:red;">مرفوضة</td>
+      <td class="tg-yw4l" ng-if="status[1] == NaN" > </td>
+
+    <td class="tg-yw4l" style="background-color: #f2f2f2">  </td>
+    <td class="tg-yw4l">الاعتماد</td>
+  </tr>
+   <tr>
+    <td class="tg-yw4l" style="border: none ; background-color: #f2f2f2"> </td>
+	<td class="tg-yw4l">{{comments[1].content}}</td>
+    <td class="tg-yw4l">{{comments[0].content}} </td>
+    <td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+    <td class="tg-yw4l">التعليق</td>
+  </tr>
+
+</table> <!--------- Status Table --------->
+
+</div> 
+        
+ <div id="w">
+    
+    <nav>
+      <ul id="nav">
+        <li><a href="#">الطلبات</a>
+          <ul>
+            <li><a href="#">تسجيل واقعة</a></li>
+            <li><a href="#">التكليف</a></li>
+			<li><a href="#">تعويض الوقت الإضافي</a></li>
+			<li><a href="RegionalDirector_ComplainantList.html">عرض الشكاوى</a></li>
+			<li><a href="#">فكرة</a></li>
+			<li><a href="#">شراء</a></li>
+			<li><a href="#">تعميم</a></li>
+          </ul>
+        </li>
+        <li><a href="#">التقارير</a>
+          <ul>
+           <li><a href="#">أرقام التشغيل</a></li>
+           <li><a href="#">التعاميم</a></li>
+		   <li><a href="#">قائمة المكرمين</a></li>
+		    <li><a href="#">المشتريات</a></li>
+          </ul>
+        </li>
+     
+      </ul>
+    </nav>
+  </div>
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" language="javascript" charset="utf-8" src="../../js/nav.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../../js/Chart.bundle.js"></script>
+	<script src="../../js/jQueryTab.js"></script>
+		<script src="../../js/test.js"></script>
+ <script> 
+	
+
+	document.getElementById("box1").style.display="block";
+    box11();
+	function hide()
+	{
+	document.getElementById("box1").style.display="none";
+	document.getElementById("box2").style.display="none";
+	document.getElementById("box3").style.display="none";
+	document.getElementById("box4").style.display="none";
+	document.getElementById("box5").style.display="none";
+	document.getElementById("box6").style.display="none";
+	document.getElementById("box7").style.display="none";
+
+	}
+	function box1(){
+	hide();
+	document.getElementById("box1").style.display="block";
+	box11();
+	}
+
+		function box2(){hide();
+	document.getElementById("box2").style.display="block";
+	box22();
+	}
+	
+		function box3(){hide();
+	document.getElementById("box3").style.display="block";
+	box33();
+	}
+	
+		function box4(){hide();
+	document.getElementById("box4").style.display="block";
+	box44();
+	}
+	
+		function box5(){hide();
+	document.getElementById("box5").style.display="block";
+	box55();
+	}
+	
+		function box6(){hide();
+	document.getElementById("box6").style.display="block";
+	box66();
+	}
+	
+		function box7(){hide();
+	document.getElementById("box7").style.display="block";
+	box77();
+	}
+	
+	
+	</script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
